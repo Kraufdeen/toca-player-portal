@@ -57,10 +57,9 @@ type StoreCache = {
 let cache: StoreCache | null = null;
 
 function dataPath(fileName: string): string {
-  // store.ts is at server/src/data/store.ts
-  // data is at server/data/*.json
-  return path.join(__dirname, "..", "..", "data", fileName);
+  return path.join(__dirname, "../../data", fileName);
 }
+
 
 function readJsonFile<T>(fileName: string): T {
   const fullPath = dataPath(fileName);
