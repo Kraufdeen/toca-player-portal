@@ -4,6 +4,7 @@ import cors from "cors";
 import healthRouter from "./routes/health";
 import authRouter from "./routes/auth";
 import homeRouter from "./routes/home"
+import profileRouter from "./routes/profile"
 
 
 import { loadStore } from "./data/store";
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/api/health", healthRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/home", homeRouter);
+app.use("/api/profile", profileRouter);
 
 
 
