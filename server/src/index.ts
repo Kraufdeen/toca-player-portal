@@ -2,7 +2,10 @@ import express from "express";
 import cors from "cors";
 
 import healthRouter from "./routes/health";
-import playersRouter from "./routes/players";
+
+import { loadStore } from "./data/store";
+loadStore();
+
 
 const app = express();
 
@@ -11,7 +14,6 @@ app.use(express.json());
 
 // routes
 app.use("/api/health", healthRouter);
-app.use("/api/players", playersRouter);
 
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
