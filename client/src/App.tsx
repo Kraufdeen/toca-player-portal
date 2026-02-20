@@ -1,6 +1,12 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import SignIn from "./pages/SignIn";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Profile from "./pages/Profile";
+
+
 
 
 function App() {
@@ -14,18 +20,24 @@ function App() {
 
   // If email exists → show app
   return (
-    <>
-      <h2>Logged in as {email}</h2>
+  <Routes>
+    <Route
+      element={
+        <Layout
+          email={email}
+          onLogout={() => setEmail(null)}
+        />
+      }
+    >
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/sessions/:id" element={<div>Session Details</div>} />
+      <Route path="*" element={<Navigate to="/" />} />
+    </Route>
+  </Routes>
+);
 
-      <Routes>
-        <Route path="/" element={<div>Home Page</div>} />
-        <Route path="/about" element={<div>About Page</div>} />
-        <Route path="/profile" element={<div>Profile Page</div>} />
-        <Route path="/sessions/:id" element={<div>Session Details</div>} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </>
-  );
 }
 
 export default App;
