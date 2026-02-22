@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
     return res.status(404).json({ error: "Player not found" });
   }
 
-  return res.json({ player: profile });
+  return res.json({ profile });
 });
 
 export default router;
