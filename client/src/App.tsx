@@ -5,6 +5,8 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
+import SessionDetails from "./pages/SessionDetails";
+
 
 
 
@@ -32,7 +34,7 @@ function App() {
       <Route path="/" element={<Home email={email} />} />
       <Route path="/about" element={<About />} />
       <Route path="/profile" element={<Profile email={email} />} />
-      <Route path="/sessions/:id" element={<div>Session Details</div>} />
+      <Route path="/sessions/:id" element={<SessionDetails email={email} />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
   </Routes>
