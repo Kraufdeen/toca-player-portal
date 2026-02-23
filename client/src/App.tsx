@@ -29,7 +29,7 @@ function App() {
         />
       }
     >
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home email={email} />} />
       <Route path="/about" element={<About />} />
       <Route path="/profile" element={<Profile email={email} />} />
       <Route path="/sessions/:id" element={<div>Session Details</div>} />
