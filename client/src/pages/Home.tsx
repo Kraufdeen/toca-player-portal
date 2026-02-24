@@ -46,6 +46,9 @@ export default function Home({ email }: { email: string }) {
   return (
     <div>
       <h1>Home</h1>
+      <div style={{ marginTop: -6, marginBottom: 14, fontSize: 12, opacity: 0.75 }}>
+        Signed in as {email}
+      </div>
 
       <h2>Upcoming Appointments</h2>
       {futureAppointments.length === 0 && <div>No upcoming appointments.</div>}

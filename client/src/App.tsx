@@ -47,7 +47,6 @@ function App() {
     <Route
       element={
         <Layout
-          email={email}
           onLogout={() => setEmail(null)}
         />
       }

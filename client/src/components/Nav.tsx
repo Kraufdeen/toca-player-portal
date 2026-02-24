@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 
 const linkStyle = ({ isActive }: { isActive: boolean }) => ({
-  marginRight: 20,
   textDecoration: "none",
   fontWeight: isActive ? 700 : 500,
   color: "#ffffff",
@@ -19,6 +18,10 @@ export default function Nav() {
         backgroundColor: "#0b1f4d",
         padding: "0.4rem 0.5rem",
         borderRadius: 8,
+        display: "flex",
+        justifyContent: "center",
+        gap: 12,
+        flexWrap: "wrap" as const,
       }}
     >
       <NavLink to="/" style={linkStyle}>
