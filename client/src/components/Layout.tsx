@@ -9,13 +9,21 @@ type Props = {
 
 export default function Layout({ email, onLogout }: Props) {
   return (
-    <div style={{ padding: "1.5rem" }}>
-      <Header onLogout={onLogout} />
-      <Nav />
-      <div style={{ marginTop: "0.75rem", opacity: 0.8, fontSize: 12 }}>
-        Signed in as {email}
+    <div style={{ minHeight: "100vh", backgroundColor: "#ffffff", color: "#0f172a" }}>
+      <div
+        style={{
+          backgroundColor: "#0b1f4d",
+          color: "#ffffff",
+          padding: "1rem 1.5rem",
+        }}
+      >
+        <Header onLogout={onLogout} />
+        <div style={{ marginTop: "0.75rem", opacity: 0.9, fontSize: 12 }}>
+          Signed in as {email}
+        </div>
+        <Nav />
       </div>
-      <main style={{ marginTop: "1.5rem" }}>
+      <main style={{ padding: "1.5rem" }}>
         <Outlet />
       </main>
     </div>

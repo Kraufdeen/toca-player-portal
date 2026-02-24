@@ -1,14 +1,26 @@
 import { NavLink } from "react-router-dom";
 
 const linkStyle = ({ isActive }: { isActive: boolean }) => ({
-  marginRight: 12,
+  marginRight: 20,
   textDecoration: "none",
-  fontWeight: isActive ? 700 : 400,
+  fontWeight: isActive ? 700 : 500,
+  color: "#ffffff",
+  opacity: isActive ? 1 : 0.9,
+  backgroundColor: isActive ? "#1e3a8a" : "transparent",
+  padding: "0.35rem 0.6rem",
+  borderRadius: 6,
 });
 
 export default function Nav() {
   return (
-    <nav style={{ marginTop: "1rem" }}>
+    <nav
+      style={{
+        marginTop: "1rem",
+        backgroundColor: "#0b1f4d",
+        padding: "0.4rem 0.5rem",
+        borderRadius: 8,
+      }}
+    >
       <NavLink to="/" style={linkStyle}>
         Home
       </NavLink>
