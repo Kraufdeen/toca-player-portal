@@ -54,7 +54,7 @@ function App() {
       <Route path="/" element={<Home email={email} />} />
       <Route path="/about" element={<About />} />
       <Route path="/profile" element={<Profile email={email} />} />
-      <Route path="/sessions/:id" element={<SessionDetails email={email} />} />
+      <Route path="/sessions/:id" element={<SessionDetails />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Route>
   </Routes>
