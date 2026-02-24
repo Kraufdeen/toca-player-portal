@@ -50,23 +50,57 @@ export default function Home({ email }: { email: string }) {
         Signed in as {email}
       </div>
 
-      <h2>Upcoming Appointments</h2>
-      {futureAppointments.length === 0 && <div>No upcoming appointments.</div>}
-      {futureAppointments.map((s) => (
-        <div key={s.id}>
-          {new Date(s.startTime).toLocaleString()} with {s.trainerName}
-        </div>
-      ))}
+      <div
+        style={{
+          marginTop: 26,
+          display: "flex",
+          justifyContent: "center",
+          gap: 24,
+          flexWrap: "wrap",
+        }}
+      >
+        <section
+          style={{
+            width: "100%",
+            maxWidth: 460,
+            backgroundColor: "#ffffff",
+            border: "1px solid #dbeafe",
+            borderRadius: 12,
+            boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
+            padding: "1.1rem 1rem",
+          }}
+        >
+          <h2 style={{ marginTop: 0 }}>Upcoming Appointments</h2>
+          {futureAppointments.length === 0 && <div>No upcoming appointments.</div>}
+          {futureAppointments.map((s) => (
+            <div key={s.id} style={{ marginBottom: 8 }}>
+              {new Date(s.startTime).toLocaleString()} with {s.trainerName}
+            </div>
+          ))}
+        </section>
 
-      <h2 style={{ marginTop: 24 }}>Past Training Sessions</h2>
-      {pastSessions.length === 0 && <div>No past sessions.</div>}
-      {pastSessions.map((s) => (
-        <div key={s.id}>
-          <Link to={`/sessions/${s.id}`}>
-            {new Date(s.startTime).toLocaleString()} with {s.trainerName}
-          </Link>
-        </div>
-      ))}
+        <section
+          style={{
+            width: "100%",
+            maxWidth: 460,
+            backgroundColor: "#ffffff",
+            border: "1px solid #dbeafe",
+            borderRadius: 12,
+            boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
+            padding: "1.1rem 1rem",
+          }}
+        >
+          <h2 style={{ marginTop: 0 }}>Past Training Sessions</h2>
+          {pastSessions.length === 0 && <div>No past sessions.</div>}
+          {pastSessions.map((s) => (
+            <div key={s.id} style={{ marginBottom: 8 }}>
+              <Link to={`/sessions/${s.id}`}>
+                {new Date(s.startTime).toLocaleString()} with {s.trainerName}
+              </Link>
+            </div>
+          ))}
+        </section>
+      </div>
     </div>
   );
 }
