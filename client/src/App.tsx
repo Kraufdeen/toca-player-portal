@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SignIn from "./pages/SignIn";
 import Layout from "./components/Layout";
@@ -12,6 +12,7 @@ import SessionDetails from "./pages/SessionDetails";
 
 function App() {
   const [email, setEmail] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   async function handleSignIn(emailInput: string): Promise<string | null> {
     const normalizedEmail = emailInput.trim().toLowerCase();
@@ -29,6 +30,7 @@ function App() {
       }
 
       setEmail(normalizedEmail);
+      navigate("/", { replace: true });
       return null;
     } catch {
       return "Unable to reach server";
@@ -47,7 +49,10 @@ function App() {
     <Route
       element={
         <Layout
-          onLogout={() => setEmail(null)}
+          onLogout={() => {
+            setEmail(null);
+            navigate("/", { replace: true });
+          }}
         />
       }
     >
