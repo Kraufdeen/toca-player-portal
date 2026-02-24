@@ -11,21 +11,36 @@ type Session = {
 export default function Home({ email }: { email: string }) {
   const [sessions, setSessions] = useState<Session[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function load() {
-      const res = await fetch(
-        `/api/training-sessions?email=${encodeURIComponent(email)}`
-      );
-      const data = await res.json();
-      setSessions(data.trainingSessions ?? []);
-      setLoading(false);
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(
+          `/api/training-sessions?email=${encodeURIComponent(email)}`
+        );
+        if (!res.ok) {
+          const body = await res.json().catch(() => ({}));
+          throw new Error(body.error || `Request failed (${res.status})`);
+        }
+
+        const data = await res.json();
+        setSessions(data.trainingSessions ?? []);
+      } catch (e) {
+        setSessions([]);
+        setError(e instanceof Error ? e.message : "Unknown error");
+      } finally {
+        setLoading(false);
+      }
     }
 
     load();
   }, [email]);
 
   if (loading) return <div>Loading sessions...</div>;
+  if (error) return <div style={{ color: "crimson" }}>Error: {error}</div>;
 
   const now = new Date();
 
