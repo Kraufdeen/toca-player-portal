@@ -2,25 +2,12 @@
 
 Single Page Application using React + TypeScript frontend and Node.js + TypeScript backend.
 
-## Development
 
-Run backend:
-
-```bash
-npm --prefix server run dev
-```
-
-Run frontend:
-
-```bash
-npm --prefix client run dev
-```
-
-## Single-Server Host Mode (for sharing on local network)
+## Single-Server Host Instructions
 
 This mode builds the React app and serves it from the Node server, so there is only one server process and one URL.
 
-One-time setup:
+One-time setup (node must be installed on the device):
 
 ```bash
 npm run install:all
@@ -32,17 +19,13 @@ Start host mode:
 npm run host
 ```
 
-Stop host mode (kills process on port `3000`):
-
-```bash
-npm run stop
-```
-
-App URL (same machine):
+When the server starts, the last log line prints:
 
 ```text
-http://localhost:3000
+Open in browser: http://localhost:3000
 ```
+
+This is the address to view the application in a browser.
 
 App URL (other devices on same network):
 
@@ -52,11 +35,10 @@ http://<your-local-ip>:3000
 
 If needed, allow inbound TCP port `3000` in your firewall settings.
 
-## Manual Test Plan
+Stop host mode:
 
-- Sign in with a known player email and confirm Home loads past sessions and future appointments.
-- Click a past training session and confirm Session Details screen opens.
-- Open About TOCA and confirm informational content renders.
-- Open Profile and confirm player email and profile fields render.
-- Click Logout and confirm app returns to Sign in.
-- From another device on the same network, open `http://<your-local-ip>:3000` and repeat basic sign-in flow.
+- Press `Ctrl+C` in the terminal running `npm run host`.
+- If the terminal was closed, kill by port:
+  - macOS/Linux: `lsof -ti :3000 | xargs kill -9`
+  - Windows (PowerShell): `Get-NetTCPConnection -LocalPort 3000 | Select-Object -ExpandProperty OwningProcess | ForEach-Object { Stop-Process -Id $_ -Force }`
+
