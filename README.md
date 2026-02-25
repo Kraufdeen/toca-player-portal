@@ -7,7 +7,13 @@ Single Page Application using React + TypeScript frontend and Node.js + TypeScri
 
 This mode builds the React app and serves it from the Node server, so there is only one server process and one URL.
 
-One-time setup (node must be installed on the device):
+Prerequisite: Install Node.js (if needed)
+
+If Node.js is not already installed on your device, download and install it from:
+
+https://nodejs.org/
+
+One-time setup (after Node.js is installed):
 
 ```bash
 npm run install:all
@@ -41,4 +47,5 @@ Stop host mode:
 - If the terminal was closed, kill by port:
   - macOS/Linux: `lsof -ti :3000 | xargs kill -9`
   - Windows (PowerShell): `Get-NetTCPConnection -LocalPort 3000 | Select-Object -ExpandProperty OwningProcess | ForEach-Object { Stop-Process -Id $_ -Force }`
+
 
