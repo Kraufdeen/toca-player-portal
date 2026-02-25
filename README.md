@@ -13,7 +13,7 @@ If Node.js is not already installed on your device, download and install it from
 
 https://nodejs.org/
 
-One-time setup (after Node.js is installed):
+One-time setup in project directory(after Node.js is installed):
 
 ```bash
 npm run install:all
@@ -48,4 +48,9 @@ Stop host mode:
   - macOS/Linux: `lsof -ti :3000 | xargs kill -9`
   - Windows (PowerShell): `Get-NetTCPConnection -LocalPort 3000 | Select-Object -ExpandProperty OwningProcess | ForEach-Object { Stop-Process -Id $_ -Force }`
 
+
+## Image Sources
+
+- Background image sourced from Pexels (free for commercial use).
+- The TOCA logo used in this project was AI-generated for demonstration purposes only.
 
